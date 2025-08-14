@@ -25,6 +25,13 @@ public class UserMapper implements BaseMapper<UserResponse, UserRequest, UserMod
                 .build();
     }
 
+    public UserModel toEntity(UserResponse dto){
+        return UserModel.builder()
+                .id(dto.getId())
+                .person(personMapper.toEntity(dto.getPerson()))
+                .build();
+    }
+
     @Override
     public UserResponse toDto(UserModel entity) {
         return UserResponse.builder()
