@@ -1,4 +1,4 @@
-package com.tuxitech.mx.targetforg.dto.request;
+package com.tuxitech.mx.targetforg.dto.request.person;
 
 import java.time.LocalDate;
 

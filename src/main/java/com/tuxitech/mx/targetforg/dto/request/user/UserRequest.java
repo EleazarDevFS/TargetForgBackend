@@ -1,8 +1,9 @@
-package com.tuxitech.mx.targetforg.dto.request;
+package com.tuxitech.mx.targetforg.dto.request.user;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
+import com.tuxitech.mx.targetforg.dto.request.person.PersonRequest;
 import com.tuxitech.mx.targetforg.dto.response.messages.MessagesResponse;
 
 import lombok.AllArgsConstructor;

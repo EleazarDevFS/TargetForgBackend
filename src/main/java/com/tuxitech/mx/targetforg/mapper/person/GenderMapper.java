@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.tuxitech.mx.targetforg.dto.request.GenderRequest;
+import com.tuxitech.mx.targetforg.dto.request.person.GenderRequest;
 import com.tuxitech.mx.targetforg.dto.response.person.GenderResponse;
 import com.tuxitech.mx.targetforg.mapper.BaseMapper;
 import com.tuxitech.mx.targetforg.model.person.GenderModel;

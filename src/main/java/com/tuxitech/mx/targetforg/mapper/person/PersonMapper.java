@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.tuxitech.mx.targetforg.dto.request.PersonRequest;
+import com.tuxitech.mx.targetforg.dto.request.person.PersonRequest;
 import com.tuxitech.mx.targetforg.dto.response.person.PersonResponse;
 import com.tuxitech.mx.targetforg.mapper.BaseMapper;
 import com.tuxitech.mx.targetforg.model.person.GenderModel;
