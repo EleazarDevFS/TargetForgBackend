@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.tuxitech.mx.targetforg.model.person.PersonModel;
 
 @Repository
-public interface PersonRepository extends JpaRepository<PersonModel, String>{}
+public interface IPersonRepository extends JpaRepository<PersonModel, String>{}

@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.tuxitech.mx.targetforg.model.team.TeamModel;
 
 @Repository
-public interface TeamRepository extends JpaRepository<TeamModel, Long> {}
+public interface ITeamRepository extends JpaRepository<TeamModel, Long> {}
