@@ -1,6 +1,7 @@
 package com.tuxitech.mx.targetforg.mapper.person;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -49,20 +50,37 @@ public class PersonMapper implements BaseMapper<PersonResponse,PersonRequest,Per
 
     @Override
     public PersonResponse toDto(PersonModel entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toDto'");
+        return PersonResponse.builder()
+                .birthDate(entity.getBirthDate())
+                .curp(entity.getCurp())
+                .firstName(entity.getFirstName())
+                .secondName(entity.getSecondName())
+                .firstLastName(entity.getFirstLastName())
+                .secondLastName(entity.getSecondLastName())
+                .mail(entity.getMail())
+                .phone(entity.getPhone())
+                .gender(genderMapper.toDto(entity.getGender()))
+                .build();
     }
 
     @Override
     public List<PersonResponse> toDtos(List<PersonModel> entities) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toDtos'");
+        return entities.stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
     public void updateEntity(PersonRequest request, PersonModel entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateEntity'");
+        entity.setCurp(request.getCurp());
+        entity.setBirthDate(request.getBirthDate());
+        entity.setFirstName(request.getFirstName());
+        entity.setSecondName(request.getSecondName());
+        entity.setFirstLastName(request.getFirstLastName());
+        entity.setSecondLastName(request.getSecondLastName());
+        entity.setMail(request.getMail());
+        entity.setPhone(request.getPhone());
+        genderMapper.updateEntity(request.getGender(), entity.getGender());
     }
 
 }
