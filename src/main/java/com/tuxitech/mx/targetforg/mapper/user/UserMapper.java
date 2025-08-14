@@ -4,36 +4,46 @@ import com.tuxitech.mx.targetforg.dto.request.UserRequest;
 import com.tuxitech.mx.targetforg.dto.response.user.UserResponse;
 import com.tuxitech.mx.targetforg.model.user.UserModel;
 import com.tuxitech.mx.targetforg.mapper.BaseMapper;
+import com.tuxitech.mx.targetforg.mapper.person.PersonMapper;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper implements BaseMapper<UserResponse, UserRequest, UserModel>{
 
+    @Autowired
+    private PersonMapper personMapper;
+
     @Override
     public UserModel toEntity(UserRequest dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toEntity'");
+       return UserModel.builder()
+                .id(dto.getId())
+                .person(personMapper.toEntity(dto.getPerson()))
+                .build();
     }
 
     @Override
     public UserResponse toDto(UserModel entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toDto'");
+        return UserResponse.builder()
+                .id(entity.getId())
+                .person(personMapper.toDto(entity.getPerson()))
+                .build();
     }
 
     @Override
     public List<UserResponse> toDtos(List<UserModel> entities) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toDtos'");
+        return entities.stream()
+                .map(this::toDto)
+                .toList();
     }
 
     @Override
     public void updateEntity(UserRequest request, UserModel entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateEntity'");
+        entity.setId(request.getId());
+        personMapper.updateEntity(request.getPerson(), entity.getPerson());
     }
 
 }
