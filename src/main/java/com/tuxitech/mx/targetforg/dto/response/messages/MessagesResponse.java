@@ -25,4 +25,11 @@ public class MessagesResponse {
     //USER VALIDATION REQUEST
     public static final String NOT_NULL_USER_ID = "El ID del usuario no debe ser nulo";
     public static final String NOT_NULL_PERSON = "La persona no debe ser nula";
+
+    //TEAM VALIDATION REQUEST
+    public static final String NOT_NULL_TEAM_ID = "El ID del equipo no debe ser nulo";
+    public static final String NOT_BLANK_NAME_TEAM = "El nombre del equipo no puede estar en blanco";
+    public static final String NOT_BLANK_DESCRIPTION_TEAM = "La descripción del equipo no puede estar en blanco";
+    public static final String INVALID_SIZE_TEAM = "El tamaño del equipo debe ser entre 7 y 12 jugadores";
+    public static final String NOT_BLANK_LIDER = "El líder del equipo no puede estar en blanco";
 }
