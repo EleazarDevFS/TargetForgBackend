@@ -17,6 +17,11 @@ public class MessagesResponse {
     public static final String NOT_NULL_BIRTH_DATE = "La fecha de nacimiento no puede ser nula";
     public static final String PATTERN_PHONE = "El número de teléfono debe tener 10 digitos";
 
+    public static final String PERSON_ALREADY_EXISTS = "La persona ya existe";
+    public static final String UPDATE_PERSON_REQUEST_NULL = "updateRequestPerson no puede ser nulo";
+
+    public static final String TEAM_NOT_NULL = "El equipo no puede ser nulo";
+    public static final String TEAM_ALREADY_EXIST = "El equipo ya existe";
     //GENDER VALIDATION REQUEST
     public static final String NOT_NULL_ID_GENDER = "El ID del género no puede ser nulo";
     public static final String NOT_BLANK_GENDER = "El género no puede estar en blanco";
@@ -25,6 +30,8 @@ public class MessagesResponse {
     //USER VALIDATION REQUEST
     public static final String NOT_NULL_USER_ID = "El ID del usuario no debe ser nulo";
     public static final String NOT_NULL_PERSON = "La persona no debe ser nula";
+    public static final String NOT_NULL_USER = "El usuario no debe ser nulo";
+    public static final String USER_ALREADY_EXISTS = "El usuario ya existe";
 
     //TEAM VALIDATION REQUEST
     public static final String NOT_NULL_TEAM_ID = "El ID del equipo no debe ser nulo";
