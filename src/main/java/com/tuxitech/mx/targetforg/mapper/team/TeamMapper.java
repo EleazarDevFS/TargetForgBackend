@@ -18,7 +18,7 @@ public class TeamMapper implements BaseMapper<TeamResponse, TeamRequest, TeamMod
 
     @Autowired
     private UserMapper userMapper;
-
+    //Necesario para crear la entidad a partir de la solicitud o petición
     @Override
     public TeamModel toEntity(TeamRequest dto) {
         return TeamModel.builder()
@@ -29,7 +29,17 @@ public class TeamMapper implements BaseMapper<TeamResponse, TeamRequest, TeamMod
         .lider(userMapper.toEntity(dto.getLider()))
         .build();
     }
-
+    //Necesario para crear la entidad a partir de la respuesta
+    public TeamModel toEntity(TeamResponse dto) {
+        return TeamModel.builder()
+                .idTeam(dto.getIdTeam())
+                .nameTeam(dto.getNameTeam())
+                .description(dto.getDescription())
+                .sizeTeam(dto.getSizeTeam())
+                .lider(userMapper.toEntity(dto.getLider()))
+                .build();
+    }
+    
     @Override
     public TeamResponse toDto(TeamModel entity) {
        return TeamResponse.builder()

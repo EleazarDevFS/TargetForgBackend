@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.tuxitech.mx.targetforg.model.user.UserModel;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserModel, Long>{}
+public interface IUserRepository extends JpaRepository<UserModel, Long>{}
