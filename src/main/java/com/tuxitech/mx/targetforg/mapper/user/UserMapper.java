@@ -1,6 +1,6 @@
 package com.tuxitech.mx.targetforg.mapper.user;
 
-import com.tuxitech.mx.targetforg.dto.request.UserRequest;
+import com.tuxitech.mx.targetforg.dto.request.user.UserRequest;
 import com.tuxitech.mx.targetforg.dto.response.user.UserResponse;
 import com.tuxitech.mx.targetforg.model.user.UserModel;
 import com.tuxitech.mx.targetforg.mapper.BaseMapper;
