@@ -1,0 +1,28 @@
+package com.tuxitech.mx.targetforg.dto.response.messages;
+
+public class MessagesResponse {
+
+    //PERSON VALIDATION REQUEST
+    public static final String NOT_BLANK_CURP = "El curp no puede estar en blanco";
+    public static final String SIZE_CURP = "El curp debe tener exactamente 18 caracteres";
+    public static final String NOT_BLANK_FIRST_NAME = "El nombre no puede estar en blanco";
+    public static final String SIZE_FIRST_NAME = "El primer nombre debe tener como máximo 60 caracteres";
+    public static final String SIZE_SECOND_NAME = "El segundo nombre debe tener como máximo 60 caracteres";
+    public static final String NOT_BLANK_FIRST_LAST_NAME = "El primer apellido no puede estar en blanco";
+    public static final String SIZE_FIRST_LAST_NAME = "El primer apellido debe tener como máximo 70 caracteres";
+    public static final String SIZE_SECOND_LAST_NAME = "El segundo apellido debe tener como máximo 70 caracteres";
+    public static final String VALID_EMAIL = "El email debe ser válido";
+    public static final String SIZE_EMAIL = "El email debe tener como máximo 200 caracteres";
+    public static final String NOT_BLANK_EMAIL = "El email no puede estar en blanco";
+    public static final String NOT_NULL_BIRTH_DATE = "La fecha de nacimiento no puede ser nula";
+    public static final String PATTERN_PHONE = "El número de teléfono debe tener 10 digitos";
+
+    //GENDER VALIDATION REQUEST
+    public static final String NOT_NULL_ID_GENDER = "El ID del género no puede ser nulo";
+    public static final String NOT_BLANK_GENDER = "El género no puede estar en blanco";
+    public static final String NOT_NULL_GENDER = "El género no puede ser nulo";
+
+    //USER VALIDATION REQUEST
+    public static final String NOT_NULL_USER_ID = "El ID del usuario no debe ser nulo";
+    public static final String NOT_NULL_PERSON = "La persona no debe ser nula";
+}
