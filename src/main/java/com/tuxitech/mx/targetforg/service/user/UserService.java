@@ -1,12 +1,17 @@
 package com.tuxitech.mx.targetforg.service.user;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.tuxitech.mx.targetforg.dto.request.user.UserRequest;
 import com.tuxitech.mx.targetforg.dto.response.messages.MessagesResponse;
+import com.tuxitech.mx.targetforg.dto.response.team.TeamResponse;
 import com.tuxitech.mx.targetforg.dto.response.user.UserResponse;
 import com.tuxitech.mx.targetforg.mapper.user.UserMapper;
+import com.tuxitech.mx.targetforg.model.team.TeamModel;
 import com.tuxitech.mx.targetforg.model.user.UserModel;
 import com.tuxitech.mx.targetforg.repository.user.IUserRepository;
 
@@ -34,6 +39,18 @@ public class UserService {
             throw e;
         }
     }   
+
+    @Transactional
+    public List<UserResponse> getAllUsers(){
+        try {
+            List<UserModel> allUsers = userRepository.findAll();
+            return allUsers.stream()
+            .map(userMapper::toDto)
+            .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw e;// Aquí retornaríamos una excepción personalizada
+        }
+    }
 
     @Transactional
     public UserResponse getUserById(Long idUser){
