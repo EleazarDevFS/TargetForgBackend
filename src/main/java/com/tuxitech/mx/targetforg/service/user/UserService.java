@@ -27,7 +27,7 @@ public class UserService {
     public UserResponse createUser(@NonNull UserRequest userRequest) throws Exception{
         try {
             Assert.notNull(userRequest, MessagesResponse.NOT_NULL_USER);
-            if(userRepository.existsById(userRequest.getId())){
+            if(userRequest.getId() != null && userRepository.existsById(userRequest.getId())){
                 throw new Exception(MessagesResponse.USER_ALREADY_EXISTS);
             }
 

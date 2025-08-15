@@ -30,6 +30,7 @@ public class UserController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest request) throws Exception{
+            System.out.println("Request received: " + request);
         return ResponseEntity.ok(userService.createUser(request));
     }
 
