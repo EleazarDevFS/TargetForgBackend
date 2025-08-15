@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserRequest {
 
-    @NotNull(message = MessagesResponse.NOT_NULL_USER_ID)
     private Long id; 
 
     @Valid
