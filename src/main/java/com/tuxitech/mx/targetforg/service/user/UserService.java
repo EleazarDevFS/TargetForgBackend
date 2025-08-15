@@ -8,10 +8,8 @@ import org.springframework.util.Assert;
 
 import com.tuxitech.mx.targetforg.dto.request.user.UserRequest;
 import com.tuxitech.mx.targetforg.dto.response.messages.MessagesResponse;
-import com.tuxitech.mx.targetforg.dto.response.team.TeamResponse;
 import com.tuxitech.mx.targetforg.dto.response.user.UserResponse;
 import com.tuxitech.mx.targetforg.mapper.user.UserMapper;
-import com.tuxitech.mx.targetforg.model.team.TeamModel;
 import com.tuxitech.mx.targetforg.model.user.UserModel;
 import com.tuxitech.mx.targetforg.repository.user.IUserRepository;
 
