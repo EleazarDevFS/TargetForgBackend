@@ -15,12 +15,14 @@ import com.tuxitech.mx.targetforg.repository.team.ITeamRepository;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class TeamService {
 
-    private ITeamRepository teamRepository;
-    private TeamMapper teamMapper;
+    private final ITeamRepository teamRepository;
+    private final TeamMapper teamMapper;
 
     public TeamResponse createTeam(@NonNull TeamRequest teamRequest) throws Exception{
         try{

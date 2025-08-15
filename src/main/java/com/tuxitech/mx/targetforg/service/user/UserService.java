@@ -15,11 +15,13 @@ import com.tuxitech.mx.targetforg.repository.user.IUserRepository;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-    private IUserRepository userRepository;
-    private UserMapper userMapper;
+    private final IUserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Transactional
     public UserResponse createUser(@NonNull UserRequest userRequest) throws Exception{
