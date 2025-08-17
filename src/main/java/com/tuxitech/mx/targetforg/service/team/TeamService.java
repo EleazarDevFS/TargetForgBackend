@@ -3,6 +3,7 @@ package com.tuxitech.mx.targetforg.service.team;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -20,18 +21,23 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class TeamService {
-
+    @Autowired
     private final ITeamRepository teamRepository;
     private final TeamMapper teamMapper;
 
     public TeamResponse createTeam(@NonNull TeamRequest teamRequest) throws Exception{
         try{
             Assert.notNull(teamRequest, MessagesResponse.TEAM_NOT_NULL);
-            if(teamRepository.existsById(teamRequest.getIdTeam())){
+            
+            // Validar si ya existe un equipo con el mismo nombre (no por ID)
+            if(teamRepository.existsByNameTeam(teamRequest.getNameTeam())){
                 throw new Exception(MessagesResponse.TEAM_ALREADY_EXIST);
             }
 
             TeamModel teamModel = teamMapper.toEntity(teamRequest);
+            // No establecer el ID para nuevos equipos - se generará automáticamente
+            teamModel.setIdTeam(null);
+            
             //Guardamos el equipo
             TeamModel teamSaved = teamRepository.save(teamModel);
             return teamMapper.toDto(teamSaved);
@@ -95,13 +101,16 @@ public class TeamService {
     @Transactional
     public void deleteTeamById(Long idTeam) throws Exception{
         try {
-            //verify if person exist
+            //verify if team exist
             if(!teamRepository.existsById(idTeam)){
                 throw new Exception(MessagesResponse.TEAM_NOT_FOUND);
             }
             teamRepository.deleteById(idTeam);
         } catch (Exception e) {
-            throw new Exception(MessagesResponse.ERROR);
+            // Log the actual error for debugging
+            System.err.println("Error deleting team with ID " + idTeam + ": " + e.getMessage());
+            e.printStackTrace();
+            throw new Exception(MessagesResponse.ERROR + ": " + e.getMessage());
         }
     }
 }

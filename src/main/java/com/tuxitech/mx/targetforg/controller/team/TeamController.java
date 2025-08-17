@@ -2,6 +2,7 @@ package com.tuxitech.mx.targetforg.controller.team;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +28,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RequestMapping("/api/teams")
 public class TeamController {
-
+    @Autowired
     private final TeamService teamService;
 
     @PostMapping
@@ -46,14 +47,14 @@ public class TeamController {
         return ResponseEntity.ok(teamService.getTeamById(id));
     }
 
-    @PutMapping("/{idTeam}")
-    public ResponseEntity<TeamResponse> updateTeam(@Valid @PathVariable Long idTeam,
-                                                    @Valid @RequestBody TeamRequest request) throws Exception{
+    @PutMapping("/update")
+    public ResponseEntity<TeamResponse> updateTeam(@RequestBody TeamRequest request) throws Exception{
+        System.out.println(request.getIdTeam()+" "+request.getNameTeam()+" "+request.getDescription()+ " "+ request.getSizeTeam());
         return ResponseEntity.ok(teamService.updateTeam(request.getIdTeam(), request));
     }
 
     @DeleteMapping("/{idTeam}")
-    public ResponseEntity<TeamResponse> deleteTeamById(@NonNull Long idTeam) throws Exception{
+    public ResponseEntity<TeamResponse> deleteTeamById(@PathVariable @NonNull Long idTeam) throws Exception{
         teamService.deleteTeamById(idTeam);
         return ResponseEntity.noContent().build();
     }

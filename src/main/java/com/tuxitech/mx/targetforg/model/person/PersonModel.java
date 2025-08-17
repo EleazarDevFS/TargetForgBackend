@@ -39,6 +39,7 @@ public class PersonModel {
     private LocalDate birthDate;
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
+
     @ManyToOne
     @JoinColumn(name = "fk_gender")
     private GenderModel gender;
