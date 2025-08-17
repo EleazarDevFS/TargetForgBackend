@@ -1,6 +1,9 @@
 package com.tuxitech.mx.targetforg.dto.response.messages;
 
 public class MessagesResponse {
+    //ERROR FAILED DELETE
+    public static final String ERROR = "Ups! ocurrio un error al intentar eliminar el equipo";
+
 
     //PERSON VALIDATION REQUEST
     public static final String NOT_BLANK_CURP = "El curp no puede estar en blanco";
@@ -34,6 +37,7 @@ public class MessagesResponse {
     public static final String USER_ALREADY_EXISTS = "El usuario ya existe";
 
     //TEAM VALIDATION REQUEST
+    public static final String TEAM_NOT_FOUND = "El equipo no existe";
     public static final String NOT_NULL_TEAM_ID = "El ID del equipo no debe ser nulo";
     public static final String NOT_BLANK_NAME_TEAM = "El nombre del equipo no puede estar en blanco";
     public static final String NOT_BLANK_DESCRIPTION_TEAM = "La descripción del equipo no puede estar en blanco";
