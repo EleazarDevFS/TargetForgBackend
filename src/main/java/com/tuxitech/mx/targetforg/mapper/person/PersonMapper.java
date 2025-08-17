@@ -11,14 +11,22 @@ import com.tuxitech.mx.targetforg.dto.response.person.PersonResponse;
 import com.tuxitech.mx.targetforg.mapper.BaseMapper;
 import com.tuxitech.mx.targetforg.model.person.GenderModel;
 import com.tuxitech.mx.targetforg.model.person.PersonModel;
+import com.tuxitech.mx.targetforg.repository.person.IGenderRepository;
 
 @Component
 public class PersonMapper implements BaseMapper<PersonResponse,PersonRequest,PersonModel>{
     @Autowired
     private GenderMapper genderMapper;
     
+    @Autowired
+    private IGenderRepository genderRepository;
+    
     @Override
     public PersonModel toEntity(PersonRequest dto) {
+        // Buscar el género existente en lugar de crear uno nuevo
+        GenderModel existingGender = genderRepository.findById(dto.getGender().getIdGender())
+            .orElseThrow(() -> new RuntimeException("Género no encontrado con ID: " + dto.getGender().getIdGender()));
+            
         return PersonModel.builder()
                 .curp(dto.getCurp())
                 .birthDate(dto.getBirthDate())
@@ -28,7 +36,7 @@ public class PersonMapper implements BaseMapper<PersonResponse,PersonRequest,Per
                 .secondLastName(dto.getSecondLastName())
                 .mail(dto.getMail())
                 .phone(dto.getPhone())
-                .gender(genderMapper.toEntity(dto.getGender()))
+                .gender(existingGender)
                 .build();
     }
 

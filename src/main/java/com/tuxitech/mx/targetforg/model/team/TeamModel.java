@@ -2,6 +2,7 @@ package com.tuxitech.mx.targetforg.model.team;
 
 import com.tuxitech.mx.targetforg.model.user.UserModel;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class TeamModel {
     @Column(name = "size_team", nullable = false)
     private int sizeTeam;
     
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "lider_id", nullable = false)
     private UserModel lider;
 }
