@@ -91,4 +91,17 @@ public class TeamService {
         teamMapper.updateEntity(request, teamModel);
         return teamRepository.save(teamModel);
     }
+
+    @Transactional
+    public void deleteTeamById(Long idTeam) throws Exception{
+        try {
+            //verify if person exist
+            if(!teamRepository.existsById(idTeam)){
+                throw new Exception(MessagesResponse.TEAM_NOT_FOUND);
+            }
+            teamRepository.deleteById(idTeam);
+        } catch (Exception e) {
+            throw new Exception(MessagesResponse.ERROR);
+        }
+    }
 }
